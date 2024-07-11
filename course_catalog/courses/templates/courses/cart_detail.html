@@ -1,0 +1,20 @@
+{% extends 'courses/base.html' %}
+{% block title %}Твоя корзина{% endblock %}
+{% block content %}
+<h1 class="mt-4">Твоя корзина</h1>
+<ul class="list-group">
+    {% for course in cart.courses.all %}
+        <li class="list-group-item">
+            {{ course.title }}
+            <form action="{% url 'remove_from_cart' course.pk %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Удали</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'course_list' %}" class="nav-link"><-- Назад к списку курсов</a>
+
+
+
+{% endblock %}

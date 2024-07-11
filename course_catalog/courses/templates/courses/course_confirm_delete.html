@@ -1,0 +1,12 @@
+{% extends 'courses/base.html' %}
+{% block title %}Удали курс{% endblock %}
+{% block content %}
+<h1 class="mt-4">Удали курс</h1>
+<p>Уверен, что хочешь удалить "{{ course.title }}"???</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Подтверди!</button>
+</form>
+<a href="{% url 'course_list' %}" class="nav-link"><-- Назад к списку курсов</a>
+
+{% endblock %}

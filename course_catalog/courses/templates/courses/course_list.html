@@ -1,0 +1,13 @@
+{% extends 'courses/base.html' %}
+{% block title %}Список курсов{% endblock %}
+{% block content %}
+<h1 class="mt-4">Список курсов</h1>
+<ul class="list-group">
+    {% for course in courses %}
+        <li class="list-group-item">
+            <a href="{% url 'course_detail' course.pk %}">{{ course.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'course_create' %}" class="btn btn-primary mt-3">Добавить новый курс</a>
+{% endblock %}
